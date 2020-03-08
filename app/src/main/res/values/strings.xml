@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JuegoDeCartas</string>
+    <string name="carta4">Carta4</string>
+    <string name="carta2">Carta2</string>
+    <string name="carta5">Carta5</string>
+    <string name="carta1">Carta1</string>
+    <string name="todo">TODO</string>
+</resources>
