@@ -2,6 +2,7 @@ package jotajotaavm.android.juegodecartas
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -72,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         imageView.setOnClickListener {
             if (count <= 3 && !pressed) {
                 imageView.setImageResource(drawableResourceId)
-                //total+=nextValues.get(0)
+                total+=calcularCarta(nextValues.get(0).toInt())
+                editText5.setText(total.toString())
                 count++
                 pressed = true
             } else if (count <= 3 && pressed) {
@@ -86,7 +88,8 @@ class MainActivity : AppCompatActivity() {
 
             if (count <= 3 && !pressed2) {
                 imageView2.setImageResource(drawableResourceId2)
-                //total+=nextValues.get(1)
+                total+=calcularCarta(nextValues.get(1).toInt())
+                editText5.setText(total.toString())
                 count++
                 pressed2 = true
             } else if (count <= 3 && pressed2) {
@@ -99,7 +102,8 @@ class MainActivity : AppCompatActivity() {
         imageView3.setOnClickListener {
             if (count <= 3 && !pressed3) {
                 imageView3.setImageResource(drawableResourceId3)
-                //total+=nextValues.get(2)
+                total+=calcularCarta(nextValues.get(2).toInt())
+                editText5.setText(total.toString())
                 count++
                 pressed3 = true
             } else if (count <= 3 && pressed3) {
@@ -112,7 +116,8 @@ class MainActivity : AppCompatActivity() {
         imageView4.setOnClickListener {
             if (count <= 3 && !pressed4) {
                 imageView4.setImageResource(drawableResourceId4)
-                //total+=nextValues.get(3)
+                total+=calcularCarta(nextValues.get(3).toInt())
+                editText5.setText(total.toString())
                 count++
                 pressed4 = true
             } else if (count <= 3 && pressed4) {
@@ -125,7 +130,8 @@ class MainActivity : AppCompatActivity() {
         imageView5.setOnClickListener {
             if (count <= 3 && !pressed5) {
                 imageView5.setImageResource(drawableResourceId5)
-                //total+=nextValues.get(4)
+                total+=calcularCarta(nextValues.get(4).toInt())
+                editText5.setText(total.toString())
                 count++
                 pressed5 = true
             } else if (count <= 3 && pressed5) {
@@ -140,5 +146,29 @@ class MainActivity : AppCompatActivity() {
     private fun restart() {
         val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
+    }
+
+    private fun calcularCarta(numCarta:Int):Int {
+        var resultNumCarta=0
+
+        if(numCarta > 10 && numCarta <= 20) {
+            resultNumCarta = numCarta-10
+        }
+        else if(numCarta > 20 && numCarta <=30) {
+            resultNumCarta = numCarta-20
+        }
+        else if(numCarta > 30 && numCarta <=40) {
+            resultNumCarta = numCarta-30
+        }
+        else
+            resultNumCarta = numCarta
+
+        var array: IntArray = intArrayOf(8, 9, 10, 18, 19, 20, 28, 29, 30, 38, 39, 40)
+
+        if(resultNumCarta in array) {
+            resultNumCarta += 2
+        }
+
+        return resultNumCarta
     }
 }
