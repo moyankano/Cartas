@@ -2,11 +2,14 @@ package jotajotaavm.android.juegodecartas
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
+import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationSet
+import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 import kotlin.random.Random
 
 
@@ -79,8 +82,10 @@ class MainActivity : AppCompatActivity() {
                 pressed = true
             } else if (count <= 3 && pressed) {
             } else if (count > 3 && !pressed) {
+                checkAndShowFinalResult()
                 restart()
             } else {
+                checkAndShowFinalResult()
                 restart()
             }
         }
@@ -94,8 +99,10 @@ class MainActivity : AppCompatActivity() {
                 pressed2 = true
             } else if (count <= 3 && pressed2) {
             } else if (count > 3 && !pressed2) {
+                checkAndShowFinalResult()
                 restart()
             } else {
+                checkAndShowFinalResult()
                 restart()
             }
         }
@@ -108,8 +115,10 @@ class MainActivity : AppCompatActivity() {
                 pressed3 = true
             } else if (count <= 3 && pressed3) {
             } else if (count > 3 && !pressed3) {
+                checkAndShowFinalResult()
                 restart()
             } else {
+                checkAndShowFinalResult()
                 restart()
             }
         }
@@ -122,8 +131,10 @@ class MainActivity : AppCompatActivity() {
                 pressed4 = true
             } else if (count <= 3 && pressed4) {
             } else if (count > 3 && !pressed4) {
+                checkAndShowFinalResult()
                 restart()
             } else {
+                checkAndShowFinalResult()
                 restart()
             }
         }
@@ -136,14 +147,17 @@ class MainActivity : AppCompatActivity() {
                 pressed5 = true
             } else if (count <= 3 && pressed5) {
             } else if (count > 3 && !pressed5) {
+                checkAndShowFinalResult()
                 restart()
             } else {
+                checkAndShowFinalResult()
                 restart()
             }
         }
     }
 
     private fun restart() {
+
         val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
     }
@@ -171,4 +185,28 @@ class MainActivity : AppCompatActivity() {
 
         return resultNumCarta
     }
+
+    private fun checkAndShowFinalResult(){
+        val fadeIn = AlphaAnimation(0f, 1f)
+        fadeIn.interpolator = DecelerateInterpolator() //add this
+        fadeIn.duration = 1000
+
+        val fadeOut = AlphaAnimation(1f, 0f)
+        fadeOut.interpolator = AccelerateInterpolator() //and this
+        fadeOut.startOffset = 1000
+        fadeOut.duration = 1000
+
+        val animation = AnimationSet(false) //change to false
+        animation.addAnimation(fadeIn)
+        animation.addAnimation(fadeOut)
+        imageView6.setAnimation(animation)
+
+        if(total<=20)
+            imageView6.setImageResource(R.drawable.mano1)
+        else
+            imageView6.setImageResource(R.drawable.mano2)
+
+        imageView6.visibility=View.VISIBLE
+    }
+
 }
