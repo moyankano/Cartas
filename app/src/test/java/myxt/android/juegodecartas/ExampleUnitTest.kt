@@ -1,4 +1,4 @@
-package jotajotaavm.android.juegodecartas
+package myxt.android.juegodecartas
 
 import org.junit.Test
 

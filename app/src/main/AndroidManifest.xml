@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jotajotaavm.android.juegodecartas">
+    package="myxt.android.juegodecartas">
 
     <application
         android:allowBackup="true"
