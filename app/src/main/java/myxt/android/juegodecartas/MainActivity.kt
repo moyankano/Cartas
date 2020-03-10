@@ -1,4 +1,4 @@
-package jotajotaavm.android.juegodecartas
+package myxt.android.juegodecartas
 
 import android.content.Intent
 import android.os.Bundle
@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var array: IntArray = intArrayOf(8, 9, 10, 18, 19, 20, 28, 29, 30, 38, 39, 40)
-        var arrayValores = IntArray(5)
+        val array: IntArray = intArrayOf(8, 9, 10, 18, 19, 20, 28, 29, 30, 38, 39, 40)
+        val arrayValores = IntArray(5)
 
         var nextValues = MutableList(5) { Random.nextInt(1, 40) }
         nextValues.sort()
@@ -76,11 +76,12 @@ class MainActivity : AppCompatActivity() {
         imageView.setOnClickListener {
             if (count <= 3 && !pressed) {
                 imageView.setImageResource(drawableResourceId)
-                total+=calcularCarta(nextValues.get(0).toInt())
+                total += calcularCarta(nextValues.get(0))
                 editText5.setText(total.toString())
                 count++
                 pressed = true
             } else if (count <= 3 && pressed) {
+                Log.d("onClickListener", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
             } else if (count > 3 && !pressed) {
                 checkAndShowFinalResult()
                 restart()
@@ -93,11 +94,12 @@ class MainActivity : AppCompatActivity() {
 
             if (count <= 3 && !pressed2) {
                 imageView2.setImageResource(drawableResourceId2)
-                total+=calcularCarta(nextValues.get(1).toInt())
+                total += calcularCarta(nextValues.get(1))
                 editText5.setText(total.toString())
                 count++
                 pressed2 = true
             } else if (count <= 3 && pressed2) {
+                Log.d("onClickListener2", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
             } else if (count > 3 && !pressed2) {
                 checkAndShowFinalResult()
                 restart()
@@ -109,11 +111,12 @@ class MainActivity : AppCompatActivity() {
         imageView3.setOnClickListener {
             if (count <= 3 && !pressed3) {
                 imageView3.setImageResource(drawableResourceId3)
-                total+=calcularCarta(nextValues.get(2).toInt())
+                total += calcularCarta(nextValues.get(2))
                 editText5.setText(total.toString())
                 count++
                 pressed3 = true
             } else if (count <= 3 && pressed3) {
+                Log.d("onClickListener3", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
             } else if (count > 3 && !pressed3) {
                 checkAndShowFinalResult()
                 restart()
@@ -125,11 +128,12 @@ class MainActivity : AppCompatActivity() {
         imageView4.setOnClickListener {
             if (count <= 3 && !pressed4) {
                 imageView4.setImageResource(drawableResourceId4)
-                total+=calcularCarta(nextValues.get(3).toInt())
+                total += calcularCarta(nextValues.get(3))
                 editText5.setText(total.toString())
                 count++
                 pressed4 = true
             } else if (count <= 3 && pressed4) {
+                Log.d("onClickListener4", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
             } else if (count > 3 && !pressed4) {
                 checkAndShowFinalResult()
                 restart()
@@ -141,11 +145,12 @@ class MainActivity : AppCompatActivity() {
         imageView5.setOnClickListener {
             if (count <= 3 && !pressed5) {
                 imageView5.setImageResource(drawableResourceId5)
-                total+=calcularCarta(nextValues.get(4).toInt())
+                total += calcularCarta(nextValues.get(4))
                 editText5.setText(total.toString())
                 count++
                 pressed5 = true
             } else if (count <= 3 && pressed5) {
+                Log.d("onClickListener5", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
             } else if (count > 3 && !pressed5) {
                 checkAndShowFinalResult()
                 restart()
@@ -162,31 +167,28 @@ class MainActivity : AppCompatActivity() {
         this.startActivity(intent)
     }
 
-    private fun calcularCarta(numCarta:Int):Int {
-        var resultNumCarta=0
+    private fun calcularCarta(numCarta: Int): Int {
+        var resultNumCarta:Int
 
-        if(numCarta > 10 && numCarta <= 20) {
-            resultNumCarta = numCarta-10
-        }
-        else if(numCarta > 20 && numCarta <=30) {
-            resultNumCarta = numCarta-20
-        }
-        else if(numCarta > 30 && numCarta <=40) {
-            resultNumCarta = numCarta-30
-        }
-        else
+        if (numCarta > 10 && numCarta <= 20) {
+            resultNumCarta = numCarta - 10
+        } else if (numCarta > 20 && numCarta <= 30) {
+            resultNumCarta = numCarta - 20
+        } else if (numCarta > 30 && numCarta <= 40) {
+            resultNumCarta = numCarta - 30
+        } else
             resultNumCarta = numCarta
 
-        var array: IntArray = intArrayOf(8, 9, 10, 18, 19, 20, 28, 29, 30, 38, 39, 40)
+        val array: IntArray = intArrayOf(8, 9, 10, 18, 19, 20, 28, 29, 30, 38, 39, 40)
 
-        if(resultNumCarta in array) {
+        if (resultNumCarta in array) {
             resultNumCarta += 2
         }
 
         return resultNumCarta
     }
 
-    private fun checkAndShowFinalResult(){
+    private fun checkAndShowFinalResult() {
         val fadeIn = AlphaAnimation(0f, 1f)
         fadeIn.interpolator = DecelerateInterpolator() //add this
         fadeIn.duration = 1000
@@ -201,12 +203,12 @@ class MainActivity : AppCompatActivity() {
         animation.addAnimation(fadeOut)
         imageView6.setAnimation(animation)
 
-        if(total<=20)
+        if (total <= 20)
             imageView6.setImageResource(R.drawable.mano1)
         else
             imageView6.setImageResource(R.drawable.mano2)
 
-        imageView6.visibility=View.VISIBLE
+        imageView6.visibility = View.VISIBLE
     }
 
 }
