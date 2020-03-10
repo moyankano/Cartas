@@ -81,7 +81,9 @@ class MainActivity : AppCompatActivity() {
                 count++
                 pressed = true
             } else if (count <= 3 && pressed) {
-                Log.d("onClickListener", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
+                Log.d("onClickListener",
+                    "Valores: count = $count y pressed = $pressed. No se realiza acción alguna"
+                )
             } else if (count > 3 && !pressed) {
                 checkAndShowFinalResult()
                 restart()
@@ -99,7 +101,9 @@ class MainActivity : AppCompatActivity() {
                 count++
                 pressed2 = true
             } else if (count <= 3 && pressed2) {
-                Log.d("onClickListener2", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
+                Log.d("onClickListener2",
+                    "Valores: count = $count y pressed = $pressed. No se realiza acción alguna"
+                )
             } else if (count > 3 && !pressed2) {
                 checkAndShowFinalResult()
                 restart()
@@ -116,7 +120,9 @@ class MainActivity : AppCompatActivity() {
                 count++
                 pressed3 = true
             } else if (count <= 3 && pressed3) {
-                Log.d("onClickListener3", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
+                Log.d("onClickListener3",
+                    "Valores: count = $count y pressed = $pressed. No se realiza acción alguna"
+                )
             } else if (count > 3 && !pressed3) {
                 checkAndShowFinalResult()
                 restart()
@@ -133,7 +139,9 @@ class MainActivity : AppCompatActivity() {
                 count++
                 pressed4 = true
             } else if (count <= 3 && pressed4) {
-                Log.d("onClickListener4", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
+                Log.d("onClickListener4",
+                    "Valores: count = $count y pressed = $pressed. No se realiza acción alguna"
+                )
             } else if (count > 3 && !pressed4) {
                 checkAndShowFinalResult()
                 restart()
@@ -150,7 +158,9 @@ class MainActivity : AppCompatActivity() {
                 count++
                 pressed5 = true
             } else if (count <= 3 && pressed5) {
-                Log.d("onClickListener5", "Valores: count = " + count + " y pressed = " + pressed + ". No se realiza acción alguna")
+                Log.d("onClickListener5",
+                    "Valores: count = $count y pressed = $pressed. No se realiza acción alguna"
+                )
             } else if (count > 3 && !pressed5) {
                 checkAndShowFinalResult()
                 restart()
@@ -170,11 +180,11 @@ class MainActivity : AppCompatActivity() {
     private fun calcularCarta(numCarta: Int): Int {
         var resultNumCarta:Int
 
-        if (numCarta > 10 && numCarta <= 20) {
+        if (numCarta in 11..20) {
             resultNumCarta = numCarta - 10
-        } else if (numCarta > 20 && numCarta <= 30) {
+        } else if (numCarta in 21..30) {
             resultNumCarta = numCarta - 20
-        } else if (numCarta > 30 && numCarta <= 40) {
+        } else if (numCarta in 31..40) {
             resultNumCarta = numCarta - 30
         } else
             resultNumCarta = numCarta
@@ -201,7 +211,7 @@ class MainActivity : AppCompatActivity() {
         val animation = AnimationSet(false) //change to false
         animation.addAnimation(fadeIn)
         animation.addAnimation(fadeOut)
-        imageView6.setAnimation(animation)
+        imageView6.animation = animation
 
         if (total <= 20)
             imageView6.setImageResource(R.drawable.mano1)
